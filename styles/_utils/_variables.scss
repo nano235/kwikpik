@@ -1,0 +1,126 @@
+// colors
+
+$col-white: #ffffff;
+$col-black: #000;
+
+// Grey
+$col-grey-darken2: #d2d5da;
+$col-grey-darken1: #dfe1e5;
+$col-grey-base: #edeff2;
+$col-grey-lighten1: #f8f8f8;
+$col-grey-lighten2: #ffffff;
+
+// Primary
+
+$col-primary-darken2: #17191c;
+$col-primary-darken1: #3c4049;
+$col-primary-base: #5c6370;
+$col-primary-lighten1: #7e8695;
+$col-primary-lighten2: #abb0ba;
+
+// Secondary
+$col-secondary-darken2: #793606;
+$col-secondary-darken1: #aa4b09;
+$col-secondary-base: #e07529;
+$col-secondary-lighten1: #f9b586;
+$col-secondary-lighten2: #fef3ec;
+
+// Accent
+$col-accent-darken2: #001b4d;
+$col-accent-darken1: #083b9b;
+$col-accent-base: #0047cc;
+$col-accent-lighten1: #6399ff;
+$col-accent-lighten2: #f0f5ff;
+
+// Success
+$col-success-darken2: #135813;
+$col-success-darken1: #1d871d;
+$col-success-base: #2ca62c;
+$col-success-lighten1: #63d363;
+$col-success-lighten2: #eefbee;
+
+// Warning
+$col-warning-darken2: #e58619;
+$col-warning-darken1: #f0960f;
+$col-warning-base: #f3af3d;
+$col-warning-lighten1: #fed38b;
+$col-warning-lighten2: #fff7eb;
+
+// Error
+$col-error-darken2: #740615;
+$col-error-darken1: #a5091e;
+$col-error-base: #fc0000;
+$col-error-lighten1: #ffa6b2;
+$col-error-lighten2: #ffeef0;
+
+// fonts
+$font: "Aeonik", sans-serif;
+$font-Outfit: "Outfit";
+
+$z-indexes: ("level-four", "level-three", "level-two", "level-one");
+
+//transition
+$all-transition: all 0.3s ease-out;
+
+$max-width: 144rem;
+
+//gradient
+$orange-grad: linear-gradient(76.89deg, #ffb30f 11.85%, #edcb00 100.03%);
+
+$elastic-out: linear(
+	0,
+	0.2178 2.1%,
+	1.1144 8.49%,
+	1.2959 10.7%,
+	1.3463 11.81%,
+	1.3705 12.94%,
+	1.3726,
+	1.3643 14.48%,
+	1.3151 16.2%,
+	1.0317 21.81%,
+	0.941 24.01%,
+	0.8912 25.91%,
+	0.8694 27.84%,
+	0.8698 29.21%,
+	0.8824 30.71%,
+	1.0122 38.33%,
+	1.0357,
+	1.046 42.71%,
+	1.0416 45.7%,
+	0.9961 53.26%,
+	0.9839 57.54%,
+	0.9853 60.71%,
+	1.0012 68.14%,
+	1.0056 72.24%,
+	0.9981 86.66%,
+	1
+);
+$elastic-in-out: linear(
+	0,
+	0.0009 8.51%,
+	-0.0047 19.22%,
+	0.0016 22.39%,
+	0.023 27.81%,
+	0.0237 30.08%,
+	0.0144 31.81%,
+	-0.0051 33.48%,
+	-0.1116 39.25%,
+	-0.1181 40.59%,
+	-0.1058 41.79%,
+	-0.0455,
+	0.0701 45.34%,
+	0.9702 55.19%,
+	1.0696 56.97%,
+	1.0987 57.88%,
+	1.1146 58.82%,
+	1.1181 59.83%,
+	1.1092 60.95%,
+	1.0057 66.48%,
+	0.986 68.14%,
+	0.9765 69.84%,
+	0.9769 72.16%,
+	0.9984 77.61%,
+	1.0047 80.79%,
+	0.9991 91.48%,
+	1
+);

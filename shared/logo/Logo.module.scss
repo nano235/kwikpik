@@ -1,0 +1,15 @@
+@import "@/styles/imports";
+
+.logo {
+	height: 4rem;
+	width: 9.8rem;
+	position: relative;
+	display: grid;
+	place-items: center;
+	transition: $all-transition;
+	flex-shrink: 0;
+	@include screenMax("mobile") {
+		height: 3.2rem;
+		width: 7.8rem;
+	}
+}

@@ -1,0 +1,14 @@
+@import "@/styles/imports";
+
+.title {
+	margin-bottom: 2.4rem;
+	h1 {
+		@extend %title-20;
+		margin-bottom: 0.8rem;
+		font-weight: 700;
+	}
+	p {
+		color: $col-primary-darken2;
+		font-weight: 500;
+	}
+}

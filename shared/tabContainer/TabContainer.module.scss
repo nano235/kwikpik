@@ -1,0 +1,63 @@
+@import "@/styles/imports";
+
+.container {
+	width: 100%;
+	position: relative;
+	border-bottom: 0.2rem solid $col-grey-base;
+	.tabs_container {
+		width: 100%;
+		overflow-x: scroll;
+		@include noScrollBar;
+		.tabs_buttons {
+			// width: 125rem;
+			position: relative;
+			@include grid(repeat(8, 1fr), 1.2rem, 0);
+		}
+	}
+
+	.tabs_button {
+		padding: 0;
+		padding-bottom: 1rem;
+		color: $col-primary-lighten1;
+		position: relative;
+		font-weight: 400;
+		@extend %text-14;
+		text-transform: capitalize;
+		justify-content: center;
+		&__active {
+			color: #6266f0;
+			font-weight: 600;
+		}
+	}
+	.tabs_indicator {
+		position: absolute;
+		height: 0.4rem;
+		width: calc(12.5% - 2.4rem);
+		bottom: 0;
+		background: #6266f0;
+		transition: all 0.2s ease-out;
+	}
+	.title {
+		margin-bottom: 2.4rem;
+		h3 {
+			@extend %title-18;
+			font-weight: 600;
+		}
+	}
+	@include screenMax("mobile") {
+		margin-left: -1.6rem;
+		width: calc(100% + 3.2rem);
+		padding-top: 2.4rem;
+		padding-left: 1.6rem;
+		.icon_container {
+			display: none;
+		}
+		.title {
+			display: none;
+		}
+		.tabs_container {
+			overflow-x: scroll;
+			@include noScrollBar;
+		}
+	}
+}

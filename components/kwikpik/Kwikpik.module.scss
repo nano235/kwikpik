@@ -1,0 +1,100 @@
+@import "@/styles/imports";
+
+.kwikpik {
+	width: 100%;
+	max-width: $max-width;
+	margin-inline: auto;
+	padding-inline: 1.6rem;
+	padding-block: 20rem 8rem;
+	.title {
+		max-width: 52.8rem;
+		margin-bottom: 5.6rem;
+		margin-inline: auto;
+		h2 {
+			@extend %title-72;
+			color: #0b0c0c;
+			text-align: center;
+			margin-bottom: 1.6rem;
+		}
+		p {
+			@extend %text-16;
+			color: #717477;
+			text-align: center;
+			margin-inline: auto;
+		}
+	}
+	.link_row {
+		@include flex(center, center);
+		gap: 1.2rem;
+		margin-block: 4rem 8rem;
+
+		a {
+			background-color: #000000;
+			border-radius: 10rem;
+			@include flex(flex-start, center);
+			overflow: hidden;
+			padding-right: 1.6rem;
+			.icon {
+				position: relative;
+				width: 4.8rem;
+				height: 4.8rem;
+			}
+			p {
+				@extend %text-16;
+				color: #fff;
+				font-family: $font-Outfit;
+				font-weight: 600;
+			}
+		}
+	}
+	.image_container {
+		position: relative;
+		width: 112rem;
+		height: 47.7rem;
+		margin-inline: auto;
+		.ill_1 {
+			position: absolute;
+			top: 0;
+			left: 26.2rem;
+			.image {
+				position: relative;
+				width: 16.4rem;
+				height: 16.4rem;
+			}
+		}
+		.ill_2 {
+			position: absolute;
+			top: -2rem;
+			right: 26.6rem;
+			.image {
+				position: relative;
+				width: 16.4rem;
+				height: 16.4rem;
+			}
+		}
+	}
+	@include screenMax("tablet") {
+		.title {
+			margin-bottom: 1.6rem;
+		}
+		.image_container {
+			width: 34.3rem;
+			height: 14.6rem;
+			.ill_1 {
+				left: 8rem;
+				.image {
+					width: 5.2rem;
+					height: 5.2rem;
+				}
+			}
+			.ill_2 {
+				right: 8.1rem;
+				top: -0.6rem;
+				.image {
+					width: 5.2rem;
+					height: 5.2rem;
+				}
+			}
+		}
+	}
+}

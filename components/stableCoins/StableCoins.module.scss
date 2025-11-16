@@ -1,0 +1,85 @@
+@import "@/styles/imports";
+
+.stable_coins {
+	width: 100%;
+	max-width: $max-width;
+	margin-inline: auto;
+	padding: 25rem 21.6rem;
+	@include flex(center, center, column);
+	gap: 5.6rem;
+	.title {
+		text-align: center;
+		margin-inline: auto;
+		h2 {
+			max-width: 64.3rem;
+			@extend %title-72;
+			color: #0b0c0c;
+			text-align: center;
+			margin-bottom: 1.6rem;
+		}
+		p {
+			@extend %text-16;
+			line-height: 2.4rem;
+			max-width: 52.8rem;
+			color: #717477;
+			text-align: center;
+			margin-inline: auto;
+		}
+	}
+	.image_container {
+		margin-top: 5.6rem;
+		position: relative;
+		width: 100.8rem;
+		height: 37rem;
+		margin-inline: auto;
+		.image_wrapper {
+			position: absolute;
+			.image {
+				position: relative;
+				width: 32rem;
+				height: 32rem;
+			}
+			&:nth-child(1) {
+				top: 0;
+				left: 0;
+			}
+			&:nth-child(2) {
+				top: 5rem;
+				left: 34.4rem;
+			}
+			&:nth-child(3) {
+				top: 0;
+				right: 0;
+			}
+		}
+	}
+	@include screenMax("tablet") {
+		padding: 1.6rem;
+		padding-block: 20rem;
+		gap: 2.4rem;
+		border-radius: 5.6rem;
+		.image_container {
+			width: 100%;
+			margin-top: 4rem;
+			height: 12.6rem;
+			.image_wrapper {
+				.image {
+					width: 10.9rem;
+					height: 10.9rem;
+				}
+				&:nth-child(1) {
+					top: 0;
+					left: 0;
+				}
+				&:nth-child(2) {
+					top: 1.7rem;
+					left: 15.9rem;
+				}
+				&:nth-child(3) {
+					top: 0;
+					right: 0;
+				}
+			}
+		}
+	}
+}

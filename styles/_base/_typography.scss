@@ -1,0 +1,30 @@
+// @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@font-face {
+	font-family: "Aeonik";
+	src: url("/fonts/aeonik/Aeonik-Regular.ttf");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Aeonik";
+	src: url("/fonts/aeonik/Aeonik-Bold.ttf");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+section,
+article,
+blockquote,
+div,
+span,
+nav,
+p,
+ul,
+li,
+a {
+	font-size: 1.4rem;
+	line-height: 2.4rem;
+}

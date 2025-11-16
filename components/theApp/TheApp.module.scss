@@ -1,0 +1,181 @@
+@import "@/styles/imports";
+
+.app {
+	width: 100%;
+	padding-inline: 9.9rem;
+	padding-bottom: 25rem;
+	@include flex(center, center, column);
+	margin-inline: auto;
+	max-width: $max-width;
+	margin-top: 12rem;
+	.image {
+		position: relative;
+		width: 69rem;
+		height: 49.8rem;
+		z-index: 0;
+		.netflix_image {
+			position: absolute;
+			top: -2.3rem;
+			left: 15.7rem;
+			z-index: 1;
+			.netflix {
+				position: relative;
+				width: 14.3rem;
+				height: 14.3rem;
+			}
+		}
+		.mtn_image {
+			position: absolute;
+			top: -4.3rem;
+			right: 9.7rem;
+			z-index: 1;
+			.mtn {
+				position: relative;
+				width: 14.3rem;
+				height: 14.3rem;
+			}
+		}
+		.ie_image {
+			position: absolute;
+			top: 14.3rem;
+			left: -12rem;
+			z-index: 1;
+			.ie {
+				position: relative;
+				width: 19.8rem;
+				height: 19.8rem;
+			}
+		}
+		.glo_image {
+			position: absolute;
+			top: 11.7rem;
+			right: -7.2rem;
+			z-index: 1;
+			.glo {
+				position: relative;
+				width: 14.1rem;
+				height: 14.1rem;
+			}
+		}
+		.gotv_image {
+			position: absolute;
+			top: 29.6rem;
+			right: -9.5rem;
+			z-index: 1;
+			.gotv {
+				position: relative;
+				width: 20.8rem;
+				height: 20.8rem;
+			}
+		}
+		.dstv_image {
+			position: absolute;
+			top: 35.4rem;
+			left: 23.5rem;
+			z-index: 1;
+			.dstv {
+				position: relative;
+				width: 18.8rem;
+				height: 18.8rem;
+			}
+		}
+	}
+	.text_container {
+		@include flex(flex-start, center, column);
+		margin-top: 6rem;
+		.title {
+			max-width: 60.5rem;
+			h2 {
+				@extend %title-72;
+				color: #0b0c0c;
+				text-align: center;
+			}
+		}
+		.text {
+			margin-top: 1.6rem;
+			max-width: 52.8rem;
+			p {
+				@extend %text-16;
+				color: #717477;
+				text-align: center;
+			}
+		}
+		.link_row {
+			@include flex(flex-start, center);
+			gap: 1.2rem;
+			margin-top: 4rem;
+			a {
+				background-color: #000000;
+				border-radius: 10rem;
+				@include flex(flex-start, center);
+				overflow: hidden;
+				padding-right: 1.6rem;
+				.icon {
+					position: relative;
+					width: 4.8rem;
+					height: 4.8rem;
+				}
+				p {
+					@extend %text-16;
+					color: #fff;
+					font-family: $font-Outfit;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+	@include screenMax("tablet") {
+		padding-inline: 1.6rem;
+	}
+	@include screenMax("mobile") {
+		padding-bottom: 15rem;
+		.image {
+			width: 31.5rem;
+			height: 23.7rem;
+			.netflix_image {
+				.netflix {
+					width: 10rem;
+					height: 10rem;
+				}
+			}
+			.mtn_image {
+				.mtn {
+					width: 8rem;
+					height: 8rem;
+				}
+			}
+			.ie_image {
+				.ie {
+					width: 9rem;
+					height: 9rem;
+				}
+			}
+			.glo_image {
+				.glo {
+					width: 7rem;
+					height: 7rem;
+				}
+			}
+			.gotv_image {
+				.gotv {
+					width: 10rem;
+					height: 10rem;
+				}
+			}
+			.dstv_image {
+				.dstv {
+					width: 10rem;
+					height: 10rem;
+				}
+			}
+		}
+		.text_container {
+			.text {
+				p {
+					font-size: 1.4rem;
+					line-height: 2rem;
+				}
+			}
+		}
+	}
+}

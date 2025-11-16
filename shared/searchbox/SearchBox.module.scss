@@ -1,0 +1,29 @@
+@import "@/styles/imports";
+
+.searchBox {
+	width: 100%;
+	min-height: 4rem;
+	transition: $all-transition;
+	border: 0.1rem solid $col-grey-darken1;
+	border-radius: 0.8rem;
+	background-color: $col-grey-lighten2;
+	overflow: hidden;
+	@include grid(1fr 10rem);
+	margin-bottom: 4rem;
+	&:focus-within {
+		border-color: $col-grey-darken1;
+		transition: $all-transition;
+	}
+	.input {
+		@include flex(flex-start, center);
+		div {
+			border: none;
+		}
+	}
+	@include screenMax("mobile") {
+		background-color: $col-grey-lighten2;
+		border-radius: 0.4rem;
+		padding-right: 0;
+		border: none;
+	}
+}

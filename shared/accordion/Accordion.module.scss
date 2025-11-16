@@ -1,0 +1,73 @@
+@import "@/styles/imports";
+
+.accordion {
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 0.1rem solid #dedfe0;
+	padding-block: 2.4rem;
+	transition: padding-block 0.3s ease-in-out;
+
+	.text {
+		h3 {
+			color: #0b0c0c;
+			font-weight: 700;
+			@extend %text-18;
+		}
+		p {
+			@extend %text-16;
+			font-weight: 400;
+			transition: color 0.3s ease-in-out;
+		}
+	}
+
+	.header {
+		@include flex(space-between, center, nowrap);
+		gap: 1.6rem;
+		cursor: pointer;
+		transition: padding-bottom 0.5s ease-in-out;
+	}
+
+	.chevron {
+		position: relative;
+		width: 2.4rem;
+		height: 2.4rem;
+		transition: transform 0.3s ease-in-out;
+		flex-shrink: 0;
+	}
+
+	.body {
+		width: 100%;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.5s ease-in-out;
+
+		@include screenMax("mobile") {
+			width: 90%;
+		}
+	}
+
+	&[data-active="true"] {
+		border-radius: 0.8rem;
+
+		.header {
+			padding-bottom: 0.8rem;
+		}
+
+		.chevron {
+			transform: rotate(180deg);
+		}
+
+		.text {
+			p {
+				color: #717477;
+			}
+		}
+
+		.body {
+			max-height: 100rem;
+		}
+	}
+
+	@include screenMax("mobile") {
+	}
+}

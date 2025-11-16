@@ -1,0 +1,27 @@
+#nprogress {
+	.bar {
+		background-color: $col-white !important;
+		height: 4px !important;
+	}
+
+	.peg {
+		box-shadow: none !important;
+	}
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+}
+section {
+	margin-bottom: 4rem !important;
+}
+
+.react-calendar {
+	max-width: 25rem !important;
+}

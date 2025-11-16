@@ -1,0 +1,39 @@
+@import "@/styles/imports";
+
+.faq {
+	max-width: $max-width;
+	margin-inline: auto;
+	width: 100%;
+	padding-inline: 1.6rem;
+	.title {
+		max-width: 74.4rem;
+		margin-bottom: 5.6rem;
+		margin-inline: auto;
+		h2 {
+			@extend %title-72;
+			color: #0b0c0c;
+			text-align: center;
+		}
+	}
+	.faq_section {
+		max-width: 112rem;
+		width: 100%;
+		margin-inline: auto;
+		background-color: #f6f7f7;
+		border-radius: 8rem;
+		padding: 5.6rem;
+	}
+
+	.last_accordion {
+		border-bottom: none !important;
+	}
+	@include screenMax("tablet") {
+		.title {
+			margin-bottom: 4rem;
+		}
+		.faq_section {
+			padding: 2.4rem;
+			border-radius: 4rem;
+		}
+	}
+}

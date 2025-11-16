@@ -1,0 +1,86 @@
+@import "@/styles/imports";
+
+.cards {
+	background-color: #f6f7f7;
+	border-radius: 8rem;
+	padding: 8rem;
+	padding-bottom: 12rem;
+	@include flex(center, center, column);
+	gap: 16.4rem;
+	z-index: 1;
+	position: relative;
+	.card_container {
+		// height: 100vh;
+		position: sticky;
+		top: calc(50% - 36rem);
+		width: 100%;
+		height: 72rem;
+		max-width: $max-width;
+		margin-inline: auto;
+	}
+	.card {
+		background-color: #fff;
+		border-radius: 8rem;
+		padding: 2.4rem;
+		padding-left: 8rem;
+		@include flex(space-between, center);
+		// position: sticky;
+		// top: calc(50% - 36rem);
+		gap: 2.4rem;
+		.text_container {
+			max-width: 48rem;
+			h3 {
+				@extend %title-56;
+				color: #0b0c0c;
+				margin-bottom: 2.4rem;
+			}
+			p {
+				@extend %text-24;
+				color: #717477;
+				line-height: 3.2rem;
+			}
+		}
+		.image {
+			width: 64rem;
+			height: 67.2rem;
+			position: relative;
+		}
+	}
+	@include screenMax("tablet") {
+		padding: 1.6rem;
+		gap: 2.4rem;
+		border-radius: 5.6rem;
+		.card_container {
+			&:nth-child(3) {
+				height: auto;
+				.card {
+					height: 60rem;
+				}
+			}
+		}
+		.card {
+			border-radius: 4rem;
+			padding: 5rem 2.4rem 2.4rem;
+			gap: 1.6rem;
+			justify-content: center;
+			.text_container {
+				p {
+					font-size: 1.6rem;
+					line-height: 2.4rem;
+				}
+			}
+			.image {
+				width: 29.5rem;
+				height: 31rem;
+			}
+		}
+	}
+	@include screenMax("mobile") {
+		.card {
+			.image {
+				width: 100%;
+				height: 40rem;
+			}
+		}
+	}
+}
