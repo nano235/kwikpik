@@ -14,7 +14,7 @@ import {
 import { AnimatedSection } from "../transactions/Transactions";
 
 const useIsMobile = () => {
-	const [isMobile, setIsMobile] = useState(false);
+	const [isMobile, setIsMobile] = useState(true);
 
 	useEffect(() => {
 		if (typeof window === "undefined") return;
