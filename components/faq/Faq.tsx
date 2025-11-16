@@ -17,7 +17,7 @@ const faq = [
 		id: "2",
 		title: "Is Kwikpik a bank or a crypto app?",
 		description:
-			"Kwikpik isn&apos;t a bank. It&apos;s a hybrid wallet that combines traditional finance and digital money, giving you access to stablecoins, fiat payments, and on/off-ramps in one place.",
+			"Kwikpik isn't a bank. It's a hybrid wallet that combines traditional finance and digital money, giving you access to stablecoins, fiat payments, and on/off-ramps in one place.",
 	},
 	{
 		id: "3",
