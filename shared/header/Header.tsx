@@ -17,7 +17,7 @@ export default function Header() {
 					</div>
 					<div className={styles.link_row}>
 						<Link
-							href="https://play.google.com/store/apps/details?id=com.kwikpik.app"
+							href="https://play.google.com/store/apps/details?id=io.kwikpik.app"
 							target="_blank"
 							rel="noopener noreferrer"
 						>

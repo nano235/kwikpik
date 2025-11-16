@@ -53,9 +53,9 @@
 		.card_container {
 			&:nth-child(3) {
 				height: auto;
-				.card {
-					height: 60rem;
-				}
+				// .card {
+				// 	height: 60rem;
+				// }
 			}
 		}
 		.card {
@@ -80,6 +80,14 @@
 			.image {
 				width: 100%;
 				height: 40rem;
+			}
+		}
+	}
+	@include screenMax("ssm-mobile") {
+		.card {
+			.image {
+				width: 100%;
+				height: 35rem;
 			}
 		}
 	}

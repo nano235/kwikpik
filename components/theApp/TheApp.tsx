@@ -3,7 +3,7 @@
 import Link from "next/link";
 import styles from "./TheApp.module.scss";
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import {
 	useScroll,
 	useTransform,
@@ -14,30 +14,53 @@ import {
 import { AnimatedSection } from "../transactions/Transactions";
 
 const useIsMobile = () => {
-	const [isMobile, setIsMobile] = useState(() => {
-		if (typeof window !== "undefined") {
-			return window.innerWidth <= 450;
-		}
-		return false;
-	});
+	const [isMobile, setIsMobile] = useState(false);
 
 	useEffect(() => {
+		if (typeof window === "undefined") return;
+
 		const checkMobile = () => {
-			setIsMobile(window.innerWidth <= 450);
+			const width = window.innerWidth;
+			const isMobileWidth = width <= 450;
+			setIsMobile(isMobileWidth);
 		};
 
-		// Set initial value
+		// Check immediately
 		checkMobile();
 
-		// Add resize listener
-		window.addEventListener("resize", checkMobile);
+		// Use matchMedia for better cross-browser support
+		const mediaQuery = window.matchMedia("(max-width: 450px)");
+
+		const handleMediaChange = (e: MediaQueryListEvent) => {
+			setIsMobile(e.matches);
+		};
+
+		// Modern browsers
+		if (mediaQuery.addEventListener) {
+			mediaQuery.addEventListener("change", handleMediaChange);
+		} else if (mediaQuery.addListener) {
+			// Legacy browsers
+			mediaQuery.addListener(handleMediaChange);
+		}
+
+		// Also listen to resize as fallback
+		const handleResize = () => {
+			checkMobile();
+		};
+
+		window.addEventListener("resize", handleResize);
+		window.addEventListener("orientationchange", handleResize);
 
 		return () => {
-			window.removeEventListener("resize", checkMobile);
+			if (mediaQuery.removeEventListener) {
+				mediaQuery.removeEventListener("change", handleMediaChange);
+			} else if (mediaQuery.removeListener) {
+				mediaQuery.removeListener(handleMediaChange);
+			}
+			window.removeEventListener("resize", handleResize);
+			window.removeEventListener("orientationchange", handleResize);
 		};
 	}, []);
-
-	console.log("isMobile", isMobile);
 
 	return isMobile;
 };
@@ -78,47 +101,81 @@ const AnimatedImage = ({
 	// Parse final positions (remove 'rem' and convert to numbers)
 	const parseRem = (value: string) => parseFloat(value.replace("rem", "")) || 0;
 
-	// Use mobile values if on mobile, otherwise use desktop values
-	const activeTop = isMobile && mobileFinalTop ? mobileFinalTop : finalTop;
-	const activeLeft =
-		isMobile && mobileFinalLeft !== undefined ? mobileFinalLeft : finalLeft;
-	const activeRight =
-		isMobile && mobileFinalRight !== undefined ? mobileFinalRight : finalRight;
-	const activeWidth =
-		isMobile && mobileElementWidth ? mobileElementWidth : elementWidth;
+	// Memoize values that depend on isMobile so transforms update when isMobile changes
+	const animationValues = useMemo(() => {
+		// Use mobile values if on mobile, otherwise use desktop values
+		const activeTop = isMobile && mobileFinalTop ? mobileFinalTop : finalTop;
+		const activeLeft =
+			isMobile && mobileFinalLeft !== undefined ? mobileFinalLeft : finalLeft;
+		const activeRight =
+			isMobile && mobileFinalRight !== undefined ? mobileFinalRight : finalRight;
+		const activeWidth =
+			isMobile && mobileElementWidth ? mobileElementWidth : elementWidth;
 
-	const finalTopValue = parseRem(activeTop);
-	const finalLeftValue = activeLeft ? parseRem(activeLeft) : null;
-	const finalRightValue = activeRight ? parseRem(activeRight) : null;
+		const finalTopValue = parseRem(activeTop);
+		const finalLeftValue = activeLeft ? parseRem(activeLeft) : null;
+		const finalRightValue = activeRight ? parseRem(activeRight) : null;
 
-	// Container dimensions: desktop 69rem, mobile 31.5rem
-	const containerWidth = isMobile ? 31.5 : 69;
-	const containerCenter = containerWidth / 2;
+		// Container dimensions: desktop 69rem, mobile 31.5rem
+		const containerWidth = isMobile ? 31.5 : 69;
+		const containerCenter = containerWidth / 2;
 
-	// Calculate the center position of the element
-	// For left: original left edge + half width = center position
-	// For right: containerWidth - right value - half width = center position
-	// Note: Negative right values mean the element extends beyond the container
-	const getFinalCenterX = () => {
-		if (finalLeftValue !== null) {
-			// Original left edge is at finalLeftValue, center is at left + width/2
-			// Works for both positive (inside) and negative (outside) values
-			return finalLeftValue + activeWidth / 2;
-		} else if (finalRightValue !== null) {
-			// Original right edge is at finalRightValue from the container's right edge
-			// Right edge position from left = containerWidth - finalRightValue
-			// (For negative values, this adds to containerWidth, extending beyond)
-			// Center position = right edge - width/2
-			const rightEdgeFromLeft = containerWidth - finalRightValue;
-			return rightEdgeFromLeft - activeWidth / 2;
-		}
-		return containerCenter;
-	};
+		// Calculate the center position of the element
+		// For left: original left edge + half width = center position
+		// For right: containerWidth - right value - half width = center position
+		// Note: Negative right values mean the element extends beyond the container
+		const getFinalCenterX = () => {
+			if (finalLeftValue !== null) {
+				// Original left edge is at finalLeftValue, center is at left + width/2
+				// Works for both positive (inside) and negative (outside) values
+				return finalLeftValue + activeWidth / 2;
+			} else if (finalRightValue !== null) {
+				// Original right edge is at finalRightValue from the container's right edge
+				// Right edge position from left = containerWidth - finalRightValue
+				// (For negative values, this adds to containerWidth, extending beyond)
+				// Center position = right edge - width/2
+				const rightEdgeFromLeft = containerWidth - finalRightValue;
+				return rightEdgeFromLeft - activeWidth / 2;
+			}
+			return containerCenter;
+		};
 
-	const finalCenterX = getFinalCenterX();
+		const finalCenterX = getFinalCenterX();
 
-	const xValue = useTransform(scrollProgress, [0, 1], [containerCenter, finalCenterX]);
-	const yValue = useTransform(scrollProgress, [0, 1], [0, finalTopValue]);
+		return {
+			containerCenter,
+			finalCenterX,
+			finalTopValue,
+		};
+	}, [
+		isMobile,
+		finalTop,
+		mobileFinalTop,
+		finalLeft,
+		mobileFinalLeft,
+		finalRight,
+		mobileFinalRight,
+		elementWidth,
+		mobileElementWidth,
+	]);
+
+	// Use transform with function that reads directly from animationValues
+	// This ensures it always uses the latest values when isMobile changes
+	const xValue = useTransform(scrollProgress, latest => {
+		const progress = latest;
+		return (
+			animationValues.containerCenter +
+			(animationValues.finalCenterX - animationValues.containerCenter) * progress
+		);
+	});
+
+	const yValue = useTransform(scrollProgress, latest => {
+		const progress = latest;
+		return animationValues.finalTopValue * progress;
+	});
+
+	// The transform functions will use the latest animationValues from closure
+	// When isMobile changes, animationValues changes, component re-renders, and transforms update
 
 	const left = useMotionTemplate`${xValue}rem`;
 	const top = useMotionTemplate`${yValue}rem`;
