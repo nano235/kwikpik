@@ -58,6 +58,8 @@ const Hero = () => {
 								alt="phone"
 								fill
 								quality={100}
+								loading="eager"
+								priority={true}
 							/>
 						</div>
 						<div className={styles.usdt_container}>

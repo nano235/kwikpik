@@ -81,7 +81,14 @@ const Kwikpik = () => {
 				</Link>
 			</AnimatedSection>
 			<div className={styles.image_container}>
-				<Image src="/images/logo-large.png" alt="kwikpik" fill quality={100} />
+				<Image
+					src="/images/logo-large.png"
+					alt="kwikpik"
+					fill
+					quality={100}
+					loading="eager"
+					priority={true}
+				/>
 				<motion.div
 					className={styles.ill_1}
 					style={{
