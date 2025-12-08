@@ -7,11 +7,10 @@ import {
 	Cards,
 	Transactions,
 	StableCoins,
-	Faq,
-	Kwikpik,
-} from "@/components";
+} from "@/components/home";
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { Partners, Faq, Kwikpik } from "@/shared";
 
 export default function Home() {
 	useEffect(() => {
@@ -35,6 +34,7 @@ export default function Home() {
 		<>
 			<Hero />
 			<Background />
+			<Partners />
 			<TheApp />
 			<Cards />
 			<Transactions />

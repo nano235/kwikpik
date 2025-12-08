@@ -1,0 +1,545 @@
+@import "@/styles/imports";
+
+.benefits {
+	background-color: $col-white;
+	margin-top: -10rem;
+	padding: 25rem 8rem 8rem;
+	@include flex(center, center, column);
+	border-bottom-left-radius: 8rem;
+	border-bottom-right-radius: 8rem;
+	width: 100%;
+	z-index: 2;
+	.container {
+		max-width: $max-width;
+		margin-inline: auto;
+		width: 100%;
+		.button {
+			margin-bottom: 4rem;
+			margin-inline: auto;
+			color: #717477;
+		}
+		.title_container {
+			margin-block: 5rem 20rem;
+			margin-inline: auto;
+			width: 100%;
+			@include flex(center, center, column);
+			.title {
+				@include flex(center, center, column);
+				text-align: center;
+				h1 {
+					@extend %title-72;
+					color: #0b0c0c;
+					margin-bottom: 1.6rem;
+					max-width: 53.7rem;
+				}
+				p {
+					color: #717477;
+					@extend %text-16;
+					max-width: 36.1rem;
+				}
+			}
+		}
+		.cards_container {
+			width: 100%;
+			@include grid(repeat(5, 1fr), 2.4rem, 2.4rem);
+			place-items: center;
+			.card {
+				width: 17.6rem;
+				padding: 5.6rem;
+				border-radius: 2.4rem;
+				background-color: #f6f7f7;
+				height: 56rem;
+				position: relative;
+				overflow: hidden;
+				cursor: pointer;
+
+				.number {
+					width: 4rem;
+					height: 4rem;
+					border-radius: 50%;
+					background-color: #fff;
+					border: 0.1rem solid #e3e3e4;
+					color: #000;
+					@include flex(center, center);
+					font-size: 1.6rem;
+					font-weight: 400;
+					position: absolute;
+					top: 4rem;
+					left: calc(50% - 2rem);
+				}
+
+				.title {
+					position: absolute;
+					top: 40rem;
+					left: 0rem;
+					rotate: -90deg;
+					height: 4rem;
+					h3 {
+						@extend %title-40;
+						color: #000;
+					}
+				}
+
+				.description {
+					height: 0rem;
+					overflow: hidden;
+					padding-top: 2.4rem;
+					width: 36.8rem;
+					margin-top: 3.4rem;
+					p {
+						@extend %text-16;
+						color: #717477;
+						font-weight: 400;
+					}
+				}
+
+				.image_container {
+					position: absolute;
+					width: 42.5rem;
+					height: 26.1rem;
+					left: 2.7rem;
+					bottom: -40rem;
+					.image {
+						position: relative;
+						width: 100%;
+						height: 100%;
+					}
+				}
+
+				// Opening animation sequence - only animate if can-animate is true
+				&[data-active="true"][data-can-animate="true"] {
+					// Step 1: Number floats out (0-0.3s)
+					.number {
+						animation: number-float-out 0.3s ease-out forwards;
+					}
+
+					// Step 2: Card expands + title floats up simultaneously (0.3s-1.3s)
+					animation: card-expand 1s ease-out 0.3s forwards;
+					.title {
+						animation: title-float-up 1s ease-out 0.3s forwards;
+					}
+
+					// Step 3: Description shows (1.3s-2.3s)
+					.description {
+						animation: description-show 1s ease-out 1.3s forwards;
+					}
+
+					// Step 4: Drone comes up (2.3s-3.9s)
+					.image_container {
+						animation: drone-come-up 1.6s ease-out 2.3s forwards,
+							float-drone 8s ease-in-out 3.9s infinite;
+					}
+				}
+
+				// If active but can't animate yet, keep in closed state (no styles needed - defaults apply)
+
+				// Closing animation sequence (reverse) - only for cards that are closing
+				&[data-closing="true"] {
+					// Keep width at 48rem until card-contract animation starts (1.625s)
+					width: 48rem;
+
+					// Step 1: Drone stops floating and goes down (0-1.0s)
+					.image_container {
+						animation: drone-go-down 1s ease-in 0s forwards;
+					}
+
+					// Step 2: Description hides (1.0s-1.625s) - after drone starts going down
+					.description {
+						height: 12.4rem;
+						opacity: 1;
+						animation: description-hide 0.625s ease-in 1s forwards;
+					}
+
+					// Step 3: Card contracts + title goes down and rotates (1.625s-2.25s)
+					animation: card-contract 0.625s ease-in 1.625s forwards;
+					.title {
+						top: 5.6rem;
+						left: 5.6rem;
+						rotate: 0deg;
+						animation: title-float-down 0.625s ease-in 1.625s forwards;
+					}
+
+					// Step 4: Number floats back in (2.25s-2.5s) - last step
+					.number {
+						top: -5rem;
+						opacity: 0;
+						animation: number-float-in 0.25s ease-in 2.25s forwards;
+					}
+				}
+			}
+		}
+	}
+	@include screenMax("tablet") {
+		padding: 10rem 1.6rem 5rem;
+		border-bottom-left-radius: 4rem;
+		border-bottom-right-radius: 4rem;
+		.container {
+			.title_container {
+				margin-block: 3rem 4rem;
+				.title {
+					h1 {
+						font-size: 3.2rem;
+						line-height: 4rem;
+						max-width: 100%;
+					}
+					p {
+						max-width: 100%;
+					}
+				}
+			}
+			.cards_container {
+				grid-template-columns: 100%;
+				gap: 2.4rem;
+				.card {
+					width: 12rem;
+					height: 40rem;
+					padding: 2.4rem;
+					border-radius: 1.6rem;
+
+					.number {
+						width: 3.2rem;
+						height: 3.2rem;
+						font-size: 1.4rem;
+						top: 2.4rem;
+						left: calc(50% - 1.6rem);
+					}
+
+					.title {
+						top: 28rem;
+						left: 0rem;
+						h3 {
+							font-size: 2.4rem;
+							line-height: 3.2rem;
+						}
+					}
+
+					.description {
+						width: 100%;
+						margin-top: 2rem;
+						padding-top: 1.6rem;
+						p {
+							font-size: 1.4rem;
+							line-height: 2rem;
+						}
+					}
+
+					.image_container {
+						width: 30rem;
+						height: 18rem;
+						left: 2.4rem;
+						bottom: -30rem;
+					}
+
+					// Opening animation sequence - same as desktop
+					&[data-active="true"][data-can-animate="true"] {
+						// Step 1: Number floats out (0-0.3s)
+						.number {
+							animation: number-float-out 0.3s ease-out forwards;
+						}
+
+						// Step 2: Card expands + title floats up simultaneously (0.3s-1.3s)
+						animation: card-expand-mobile 1s ease-out 0.3s forwards;
+						.title {
+							animation: title-float-up-mob 1s ease-out 0.3s forwards;
+						}
+
+						// Step 3: Description shows (1.3s-2.3s)
+						.description {
+							animation: description-show 1s ease-out 1.3s forwards;
+						}
+
+						// Step 4: Drone comes up (2.3s-3.9s)
+						.image_container {
+							animation: drone-come-up 1.6s ease-out 2.3s forwards,
+								float-drone 8s ease-in-out 3.9s infinite;
+						}
+					}
+
+					// Maintain 100% width when active on mobile
+					// &[data-active="true"] {
+					// 	width: 100%;
+					// }
+
+					// Closing animation sequence - same as desktop
+					&[data-closing="true"] {
+						// Keep width at 100% until card-contract animation starts (1.625s)
+						width: 100%;
+
+						// Step 1: Drone stops floating and goes down (0-1.0s)
+						.image_container {
+							animation: drone-go-down 1s ease-in 0s forwards;
+						}
+
+						// Step 2: Description hides (1.0s-1.625s) - after drone starts going down
+						.description {
+							height: auto;
+							opacity: 1;
+							animation: description-hide 0.625s ease-in 1s forwards;
+						}
+
+						// Step 3: Card contracts + title goes down and rotates (1.625s-2.25s)
+						animation: card-contract-mobile 0.625s ease-in 1.625s forwards;
+						.title {
+							top: 2.4rem;
+							left: 2.4rem;
+							rotate: 0deg;
+							animation: title-float-down-mob 0.625s ease-in 1.625s forwards;
+						}
+
+						// Step 4: Number floats back in (2.25s-2.5s) - last step
+						.number {
+							top: -4rem;
+							opacity: 0;
+							animation: number-float-in 0.25s ease-in 2.25s forwards;
+						}
+					}
+				}
+			}
+		}
+
+		// Mobile-specific keyframe overrides
+		@keyframes number-float-out {
+			0% {
+				top: 2.4rem;
+				opacity: 1;
+			}
+			100% {
+				top: -4rem;
+				opacity: 0;
+			}
+		}
+
+		@keyframes title-float-up-mob {
+			0% {
+				top: 28rem;
+				left: 0rem;
+				rotate: -90deg;
+			}
+			100% {
+				top: 2.4rem;
+				left: 2.4rem;
+				rotate: 0deg;
+			}
+		}
+
+		@keyframes description-show {
+			0% {
+				height: 0rem;
+				opacity: 0;
+			}
+			100% {
+				height: auto;
+				opacity: 1;
+			}
+		}
+
+		@keyframes drone-come-up {
+			0% {
+				bottom: -30rem;
+				opacity: 0;
+			}
+			100% {
+				bottom: 2.4rem;
+				opacity: 1;
+			}
+		}
+
+		@keyframes drone-go-down {
+			0% {
+				bottom: 2.4rem;
+				opacity: 1;
+				transform: translateY(0) rotate(0deg) scale(1);
+			}
+			100% {
+				bottom: -30rem;
+				opacity: 0;
+				transform: translateY(0) rotate(0deg) scale(1);
+			}
+		}
+
+		@keyframes description-hide {
+			0% {
+				height: auto;
+				opacity: 1;
+			}
+			100% {
+				height: 0rem;
+				opacity: 0;
+			}
+		}
+
+		@keyframes card-contract-mobile {
+			0% {
+				width: 100%;
+			}
+			100% {
+				width: 12rem;
+			}
+		}
+
+		@keyframes title-float-down-mob {
+			0% {
+				top: 2.4rem;
+				left: 2.4rem;
+				rotate: 0deg;
+			}
+			100% {
+				top: 28rem;
+				left: 0rem;
+				rotate: -90deg;
+			}
+		}
+
+		@keyframes number-float-in {
+			0% {
+				top: -4rem;
+				opacity: 0;
+			}
+			100% {
+				top: 2.4rem;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+// Opening animations
+@keyframes number-float-out {
+	0% {
+		top: 4rem;
+		opacity: 1;
+	}
+	100% {
+		top: -5rem;
+		opacity: 0;
+	}
+}
+
+@keyframes card-expand {
+	0% {
+		width: 17.6rem;
+	}
+	100% {
+		width: 48rem;
+	}
+}
+
+@keyframes card-expand-mobile {
+	0% {
+		width: 12rem;
+	}
+	100% {
+		width: 100%;
+	}
+}
+
+@keyframes title-float-up {
+	0% {
+		top: 40rem;
+		left: 0rem;
+		rotate: -90deg;
+	}
+	100% {
+		top: 5.6rem;
+		left: 5.6rem;
+		rotate: 0deg;
+	}
+}
+
+@keyframes description-show {
+	0% {
+		height: 0rem;
+		opacity: 0;
+	}
+	100% {
+		height: 12.4rem;
+		opacity: 1;
+	}
+}
+
+@keyframes drone-come-up {
+	0% {
+		bottom: -40rem;
+		opacity: 0;
+	}
+	100% {
+		bottom: 3.4rem;
+		opacity: 1;
+	}
+}
+
+@keyframes float-drone {
+	0% {
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+	25% {
+		transform: translateY(-1.2rem) rotate(-2deg) scale(1.02);
+	}
+	50% {
+		transform: translateY(0.6rem) rotate(1deg) scale(0.99);
+	}
+	75% {
+		transform: translateY(-0.8rem) rotate(-1deg) scale(1.01);
+	}
+	100% {
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+}
+
+// Closing animations (reverse)
+@keyframes drone-go-down {
+	0% {
+		bottom: 3.4rem;
+		opacity: 1;
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+	100% {
+		bottom: -40rem;
+		opacity: 0;
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+}
+
+@keyframes description-hide {
+	0% {
+		height: 12.4rem;
+		opacity: 1;
+	}
+	100% {
+		height: 0rem;
+		opacity: 0;
+	}
+}
+
+@keyframes card-contract {
+	0% {
+		width: 48rem;
+	}
+	100% {
+		width: 17.6rem;
+	}
+}
+
+@keyframes title-float-down {
+	0% {
+		top: 5.6rem;
+		left: 5.6rem;
+		rotate: 0deg;
+	}
+	100% {
+		top: 40rem;
+		left: 0rem;
+		rotate: -90deg;
+	}
+}
+
+@keyframes number-float-in {
+	0% {
+		top: -5rem;
+		opacity: 0;
+	}
+	100% {
+		top: 4rem;
+		opacity: 1;
+	}
+}

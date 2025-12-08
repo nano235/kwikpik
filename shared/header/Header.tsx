@@ -10,7 +10,9 @@ export default function Header() {
 	return (
 		<header className={styles.header}>
 			<nav className={styles.nav}>
-				<Logo />
+				<Link href="/">
+					<Logo />
+				</Link>
 				<div className={styles.small_row}>
 					<div className={styles.text}>
 						<h5>Available on</h5>

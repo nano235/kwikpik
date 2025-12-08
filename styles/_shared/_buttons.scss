@@ -39,9 +39,11 @@
 
 %btn-secondary {
 	@extend %btn;
-	border-radius: 0.4rem;
-	background-color: transparent;
-	border-color: #6266f0;
+	border-radius: 10rem;
+	background-color: #f6f7f7;
+	border: none;
+	color: "#717477";
+	font-weight: 400;
 }
 %btn-transparent {
 	@extend %btn;

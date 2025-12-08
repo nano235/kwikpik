@@ -1,0 +1,123 @@
+@import "@/styles/imports";
+
+.partners {
+	padding: 8rem 8rem;
+	width: 100%;
+	@include flex(center, center, column);
+	gap: 4.8rem;
+
+	.container {
+		width: 100%;
+		max-width: $max-width;
+		margin-inline: auto;
+		@include flex(center, center, column);
+		gap: 4rem;
+	}
+
+	.title {
+		@extend %title-32;
+		color: #0b0c0c;
+		text-align: center;
+		font-weight: 700;
+		text-transform: none;
+	}
+
+	.logos_container {
+		@include flex(center, center, row wrap);
+		gap: 2.4rem;
+		width: 100%;
+		.logo_wrapper {
+			position: relative;
+			&:nth-child(1) {
+				width: 18.9rem;
+				height: 4rem;
+			}
+			&:nth-child(2) {
+				width: 7.1rem;
+				height: 3.2rem;
+			}
+			&:nth-child(3) {
+				width: 14.5rem;
+				height: 3.2rem;
+			}
+			&:nth-child(4) {
+				width: 16rem;
+				height: 3.2rem;
+			}
+			&:nth-child(5) {
+				width: 13rem;
+				height: 3.5rem;
+			}
+			&:nth-child(6) {
+				width: 7.2rem;
+				height: 3.2rem;
+			}
+			&:nth-child(7) {
+				width: 7.7rem;
+				height: 3.1rem;
+			}
+		}
+	}
+
+	.logo {
+		object-fit: contain;
+		height: auto;
+		max-width: 20rem;
+		max-height: 8rem;
+		width: auto;
+	}
+
+	@include screenMax("tablet") {
+		padding: 5.6rem 2.4rem;
+		gap: 3.2rem;
+
+		.container {
+			gap: 3.2rem;
+		}
+
+		.title {
+			font-size: 2rem;
+			line-height: 2.8rem;
+		}
+
+		.logos_container {
+			gap: 3.2rem;
+			justify-content: center;
+		}
+
+		.logo {
+			max-width: 15rem;
+			max-height: 6rem;
+		}
+	}
+
+	@include screenMax("mobile") {
+		gap: 2.4rem;
+
+		.container {
+			gap: 2.4rem;
+		}
+
+		.title {
+			font-size: 1.8rem;
+			line-height: 2.4rem;
+		}
+
+		.logos_container {
+			gap: 2.4rem;
+			@include grid(repeat(2, 1fr), 2.4rem, 2.4rem);
+		}
+
+		.logo_wrapper {
+			@include flex(center, center);
+			width: 100%;
+			transform: scale(0.8);
+		}
+
+		.logo {
+			max-width: 100%;
+			width: 100%;
+			height: auto;
+		}
+	}
+}

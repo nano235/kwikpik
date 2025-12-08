@@ -4,13 +4,26 @@ interface Props {
 	title?: string;
 	description?: string;
 	className?: string;
+	badge?: string;
+	badgeClassName?: string;
+	titleClassName?: string;
+	descriptionClassName?: string;
 }
 
-const Title = ({ title, description, className }: Props) => {
+const Title = ({
+	title,
+	description,
+	className,
+	badge,
+	badgeClassName,
+	titleClassName,
+	descriptionClassName,
+}: Props) => {
 	return (
 		<div className={`${styles.title} ${className}`}>
-			<h1>{title}</h1>
-			<p>{description}</p>
+			<div className={`${styles.badge} ${badgeClassName}`}>{badge}</div>
+			<h1 className={titleClassName}>{title}</h1>
+			<p className={descriptionClassName}>{description}</p>
 		</div>
 	);
 };

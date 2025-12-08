@@ -1,0 +1,98 @@
+@import "@/styles/imports";
+
+.capabilities {
+	padding: 10rem 8rem;
+	@include flex(center, center, column);
+	width: 100%;
+	z-index: 3;
+	.container {
+		max-width: $max-width;
+		margin-inline: auto;
+		width: 100%;
+		gap: 1rem;
+		.button {
+			margin-bottom: 4rem;
+			margin-inline: auto;
+			background-color: #675edc;
+			color: $col-white;
+		}
+		.card_row,
+		.mobile_card_row {
+			@include grid(repeat(3, 1fr), 2.4rem, 2.4rem);
+			margin-top: 5.6rem;
+			width: 100%;
+			.card {
+				width: 100%;
+				border-radius: 2.4rem;
+				overflow: hidden;
+				position: relative;
+				padding: 2.4rem;
+				background-color: #f6f7f7;
+				.icon {
+					width: 5.6rem;
+					height: 5.6rem;
+					border-radius: 50%;
+					overflow: hidden;
+					position: relative;
+					margin-bottom: 2.4rem;
+				}
+				.text {
+					h3 {
+						@extend %text-24;
+						color: #0b0c0c;
+						line-height: 3.2rem;
+						margin-bottom: 1.6rem;
+						font-weight: 700;
+					}
+					p {
+						@extend %text-16;
+						color: #717477;
+						line-height: 2.4rem;
+					}
+				}
+			}
+		}
+		.mobile_card_row {
+			display: none;
+		}
+	}
+	@include screenMax("tablet") {
+		padding: 10rem 1.6rem;
+		.container {
+			.card_row {
+				display: none;
+			}
+			.mobile_card_row {
+				grid-template-columns: 100%;
+				display: grid;
+				.card {
+					padding: 1.6rem;
+					.icon {
+						width: 3.2rem;
+						height: 3.2rem;
+						margin-bottom: 1.6rem;
+					}
+					.text {
+						h3 {
+							font-size: 1.6rem;
+							line-height: 2.4rem;
+							margin-bottom: 0.8rem;
+						}
+					}
+					p {
+						font-size: 1.4rem;
+						line-height: 2.2rem;
+					}
+				}
+			}
+		}
+	}
+}
+.title_title {
+	max-width: 61.9rem;
+	text-align: center;
+}
+.title_description {
+	max-width: 44.9rem;
+	text-align: center;
+}

@@ -1,0 +1,211 @@
+@import "@/styles/imports";
+
+.hero {
+	min-height: 100dvh;
+	background: linear-gradient(180deg, #f1f0ff 0%, #ffffff 100%);
+	width: 100%;
+	padding-inline: 9.9rem;
+	padding-top: 14.4rem;
+	@include flex(center, center);
+	.container {
+		@include flex(space-between, center);
+		gap: 1rem;
+		width: 100%;
+		max-width: $max-width;
+		margin-inline: auto;
+		.text_container {
+			max-width: 64rem;
+			.text {
+				h1 {
+					@extend %title-88;
+					color: #0b0c0c;
+					margin-bottom: 2.4rem;
+				}
+				p {
+					@extend %text-16;
+					color: #717477;
+				}
+			}
+			.link_row {
+				@include flex(flex-start, center);
+				gap: 1.2rem;
+				margin-top: 4rem;
+				a {
+					background-color: #000000;
+					border-radius: 10rem;
+					@include flex(flex-start, center);
+					overflow: hidden;
+					padding-right: 1.6rem;
+					.icon {
+						position: relative;
+						width: 4.8rem;
+						height: 4.8rem;
+					}
+					p {
+						@extend %text-16;
+						color: #fff;
+						font-family: $font-Outfit;
+						font-weight: 600;
+					}
+				}
+			}
+		}
+		.image_container {
+			position: relative;
+			z-index: 1;
+			max-width: 60.4rem;
+			padding-right: 7.4rem;
+			.phone_image__container {
+				position: relative;
+				width: 36rem;
+				height: 66rem;
+				.phone_image {
+					position: relative;
+					width: 100%;
+					height: 100%;
+					// animation: tilt-shaking 5s infinite;
+					// animation-delay: 3s;
+				}
+			}
+			.usdt_container {
+				position: absolute;
+				top: 32.7rem;
+				left: -7.4rem;
+				animation: float-usdt 8s ease-in-out infinite;
+				animation-delay: 3s;
+				.usdt_image {
+					position: relative;
+					width: 24.8rem;
+					height: 24.8rem;
+				}
+			}
+			.usdc_container {
+				position: absolute;
+				top: 7.9rem;
+				right: -8.4rem;
+				z-index: 1;
+				animation: usdc-rotate-peek 9s ease-in-out infinite;
+				animation-delay: 3s;
+				.usdc_image {
+					position: relative;
+					width: 20.8rem;
+					height: 20.8rem;
+				}
+			}
+		}
+	}
+	@include screenMax("tablet") {
+		padding-inline: 1.6rem;
+		padding-top: 14.4rem;
+		height: auto;
+		.container {
+			justify-content: center;
+			gap: 8rem;
+			.text_container {
+				.link_row {
+					justify-content: center;
+				}
+			}
+			.image_container {
+				padding: 0;
+				.phone_image__container {
+					width: 20rem;
+					height: 37rem;
+				}
+				.usdt_container {
+					top: 16.1rem;
+					left: -6rem;
+					.usdt_image {
+						width: 14.5rem;
+						height: 14.5rem;
+					}
+				}
+				.usdc_container {
+					top: 4.8rem;
+					right: -4.5rem;
+					.usdc_image {
+						width: 11.8rem;
+						height: 11.8rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes float-usdt {
+	0% {
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+	25% {
+		transform: translateY(-1.2rem) rotate(-2deg) scale(1.02);
+	}
+	50% {
+		transform: translateY(0.6rem) rotate(1deg) scale(0.99);
+	}
+	75% {
+		transform: translateY(-0.8rem) rotate(-1deg) scale(1.01);
+	}
+	100% {
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+}
+
+@keyframes usdc-rotate-peek {
+	0% {
+		transform: translateX(0) rotateY(0deg);
+	}
+
+	20% {
+		transform: translateX(1.2rem) rotateY(15deg); // peek out + slight twist
+	}
+
+	35% {
+		transform: translateX(1.6rem) rotateY(-10deg); // rotate opposite
+	}
+
+	50% {
+		transform: translateX(1.4rem) rotateY(12deg); // twist back
+	}
+
+	65% {
+		transform: translateX(1rem) rotateY(-6deg);
+	}
+
+	100% {
+		transform: translateX(0) rotateY(0deg); // settle
+	}
+}
+
+// @keyframes tilt-shaking {
+// 	0% {
+// 		transform: rotate(0deg);
+// 	}
+// 	1% {
+// 		transform: rotate(5deg);
+// 	}
+// 	2% {
+// 		transform: rotate(0deg);
+// 	}
+// 	3% {
+// 		transform: rotate(-5deg);
+// 	}
+// 	4% {
+// 		transform: rotate(0deg);
+// 	}
+// 	5% {
+// 		transform: rotate(5deg);
+// 	}
+// 	6% {
+// 		transform: rotate(0deg);
+// 	}
+// 	7% {
+// 		transform: rotate(-5deg);
+// 	}
+// 	8% {
+// 		transform: rotate(0deg);
+// 	}
+// 	100% {
+// 		transform: rotate(0deg);
+// 	}
+// }

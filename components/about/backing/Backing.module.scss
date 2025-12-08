@@ -1,0 +1,63 @@
+@import "@/styles/imports";
+
+.backing {
+	background-color: #0b0c0c;
+	margin-top: -10rem;
+	padding: 35rem 8rem 25rem;
+	@include flex(center, center, column);
+	border-bottom-left-radius: 8rem;
+	border-bottom-right-radius: 8rem;
+	width: 100%;
+	z-index: 1;
+	.container {
+		max-width: $max-width;
+		margin-inline: auto;
+		width: 100%;
+		.row {
+			@include flex(space-between, center);
+			gap: 4rem;
+			.globe {
+				position: relative;
+				width: 62rem;
+				height: 41.8rem;
+			}
+			.text_container {
+				.button {
+					margin-bottom: 1.6rem;
+					background-color: #393a3c;
+					color: #c6c7c9;
+				}
+				h2 {
+					@extend %title-72;
+					color: #fff;
+					margin-bottom: 1.6rem;
+					max-width: 53.7rem;
+				}
+				p {
+					@extend %text-16;
+					color: #fff;
+					max-width: 62rem;
+				}
+			}
+		}
+	}
+	@include screenMax("tablet") {
+		padding: 15rem 1.6rem 5rem;
+		border-bottom-left-radius: 4rem;
+		border-bottom-right-radius: 4rem;
+		.container {
+			.row {
+				.globe {
+					width: 41.8rem;
+					height: 27.9rem;
+				}
+				.text_container {
+					.button {
+						margin-bottom: 2.4rem;
+						margin-inline: auto;
+					}
+				}
+			}
+		}
+	}
+}

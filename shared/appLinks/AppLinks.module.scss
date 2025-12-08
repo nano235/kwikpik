@@ -1,0 +1,45 @@
+@import "@/styles/imports";
+
+.link_row {
+	@include flex(flex-start, center);
+	gap: 1.2rem;
+	margin-top: 4rem;
+	a {
+		background-color: #000000;
+		border-radius: 10rem;
+		@include flex(flex-start, center);
+		overflow: hidden;
+		padding-right: 1.6rem;
+		.icon {
+			position: relative;
+			width: 4.8rem;
+			height: 4.8rem;
+		}
+		p {
+			@extend %text-16;
+			color: #fff;
+			font-family: $font-Outfit;
+			font-weight: 600;
+		}
+	}
+	&[data-type="light"] {
+		a {
+			height: 4.8rem;
+			width: 15.4rem;
+			background-color: #fff;
+			gap: 1rem;
+			justify-content: center;
+			padding-right: 0;
+			.icon {
+				width: 2.4rem;
+				height: 2.4rem;
+			}
+			p {
+				color: #000 !important;
+			}
+		}
+	}
+	@include screenMax("tablet") {
+		justify-content: center;
+	}
+}
