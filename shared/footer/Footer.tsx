@@ -52,11 +52,11 @@ const links = [
 			},
 			{
 				label: "Careers",
-				href: "/careers",
+				href: "/#",
 			},
 			{
 				label: "Blog",
-				href: "/blog",
+				href: "/#",
 			},
 			{
 				label: "Privacy Policy",
@@ -68,16 +68,16 @@ const links = [
 		title: "Solutions",
 		links: [
 			{
-				label: "Logistics",
-				href: "/logistics",
-			},
-			{
 				label: "Send & Receive Money Globally",
 				href: "/send-money",
 			},
 			{
+				label: "Logistics",
+				href: "#",
+			},
+			{
 				label: "Multi-Wallet Account",
-				href: "/wallet",
+				href: "#",
 			},
 		],
 	},
